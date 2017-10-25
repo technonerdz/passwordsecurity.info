@@ -62,7 +62,7 @@ window.setInterval(function(){
     var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">Oh no! This password was found in a database of compromised passwords!</span>';
+      document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">Oh no! This password was found in a database of compromised passwords! If this is your password, you should change it immediately. Using a password that has been breached is extremely dangerous.</span>';
     }else {
       if (this.status == 404) {
         document.getElementById("iscompromised").innerHTML = '<span style="color: #339966;">Good news, this password has never been breached!</span>';
