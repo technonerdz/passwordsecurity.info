@@ -1,20 +1,43 @@
-<!doctype html>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta charset="utf-8">
-        <title>HSIMP Demo</title>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-yellow.min.css" />
+  <link rel="stylesheet" href="hsimp.css">
+</head>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">PasswordSecurity.info</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+      </nav>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
 
 
-        <link rel="stylesheet" href="hsimp.css">
-    </head>
-    <body>
-        <p style="text-align: center;"><label>Password</label>
-        <input id="password-box" type="password" /></p>
-        <div id="password-time" class="hsimp-time"></div>
-        <ul id="password-checks" class="hsimp-checks"></ul>
+      <body>
+          <h2 style="text-align: center;">Write your password in this box:</h2>
+          <p style="text-align: center;"><!--<label>Write your password in this box</label>-->
+          <input id="password-box" type="password" onkeyup="passwordmodified()" /></p>
+          <p style="text-align: center;">It would take&nbsp;<strong id="password-time">0 seconds</strong> to crack your password</p>
+          <ul style="text-align: center;" class="hsimp-checks">
+            <h2 id="iscompromised"><span style="color: #339966;">This password was not compromised in any database breach!!</span></h2>
+          </ul>
+          <ul style="text-align: center;" id="password-checks" class="hsimp-checks"></ul>
 
-        <script src="hsimp.min.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
+          <script src="hsimp.min.js"></script>
+          <script src="main.js"></script>
+      </body>
+
+
+
+    </div>
+  </main>
+</div>
