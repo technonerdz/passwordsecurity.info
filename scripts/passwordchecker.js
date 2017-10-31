@@ -1,7 +1,5 @@
 //Script to check for pwned passwords on your own website
 
-//This is a Work in progress
-
 var passwordInput = document.getElementById("passwordbox");
 var passwordErrorText = document.getElementById("verifytext");
 var passwordplain = '';
