@@ -70,7 +70,7 @@ window.setInterval(function(){
           }
         }
       };
-      xhttp.open('GET', 'https://haveibeenpwned.com/api/v2/pwnedpassword/' + encodeURIComponent(passwordplain));
+      xhttp.open('POST', 'https://haveibeenpwned.com/api/v2/pwnedpassword/' + encodeURIComponent(passwordplain));
       xhttp.send();
     }
     lastpasschecked = passwordplain;
