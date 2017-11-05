@@ -2,7 +2,7 @@
 
 ## Introduction
 
-PasswordSecurity.info host JavaScript scripts to check for pwned passwords on your own website. All scripts in this folder are open source and can be modified to be included on your own website. 
+PasswordSecurity.info provide JavaScript scripts to check for pwned passwords on your own website. All scripts in this folder are open source and can be modified to be included on your own website. 
 
 If you want to use our exact script to check for pwned password on you Sign In form you can use the script from our CDN by following the instructions:
 
