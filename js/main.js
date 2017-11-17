@@ -76,7 +76,7 @@ window.setInterval(function(){
     lastpasschecked = passwordplain;
   }
 
-}, 6000);
+}, 2500);
 
 function passwordmodified() {
   var modifiedpassword = passwordInput.value;
