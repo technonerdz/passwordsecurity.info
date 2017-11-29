@@ -12,7 +12,7 @@ window.setInterval(function(){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          passwordErrorText.innerHTML = 'Oh no! This password was found in a database of compromised passwords. You should use another one';
+          passwordErrorText.innerHTML = 'Oh no! This password was found in a database of compromised passwords. You should use another one.';
         }else {
           if (this.status == 404) {
             passwordErrorText.innerHTML = 'This password has never been breached!';
