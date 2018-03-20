@@ -75,7 +75,7 @@ window.setInterval(function(){
           }
         }else {
           if (this.status == 404) {
-            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">There was an error while trying to connect to the API.</span>';
+            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">This password can\'t be verified right now...</span>';
           }
         }
       };
