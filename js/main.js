@@ -75,7 +75,7 @@ window.setInterval(function(){
           }
         }else {
           if (this.status == 404) {
-            document.getElementById("iscompromised").innerHTML = '<span style="color: #339966;">Good news, this password has never been breached!</span>';
+            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">There was an error while trying to connect to the API.</span>';
           }
         }
       };
@@ -86,7 +86,7 @@ window.setInterval(function(){
     lastpasschecked = passwordplain;
   }
 
-}, 2500);
+}, 2000);
 
 function passwordmodified() {
   var modifiedpassword = passwordInput.value;
