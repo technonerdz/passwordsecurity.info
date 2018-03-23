@@ -89,7 +89,8 @@ window.setInterval(function(){
             document.getElementById("iscompromised").innerHTML = '<span style="color: #339966;">Good news, this password has never been breached!</span>';
           }
         }else {
-          if (this.status == 404) {
+          if (this.readyState == 4) {
+            lastrequestfinished = true;
             document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">This password can\'t be verified right now...</span>';
           }
         }
