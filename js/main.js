@@ -69,7 +69,18 @@ window.setInterval(function(){
         if (this.readyState == 4 && this.status == 200) {
           var xhttpresponse = this.responseText;
           if (xhttpresponse.indexOf(subsha1pass) !== -1) {
-            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">Oh no! This password was found in a database of compromised passwords! If this is your password, you should change it immediately. Using a password that has been breached is extremely dangerous. <h4>If you are using this password on multiple websites, you should take the opportunity to start using different passwords for every website. Attackers can take the advantage of password reuse by automating login attempts on your account using breached emails and password pairs.</h4></span>';
+
+            var passlist = xhttpresponse.split("\n");
+            var pwnedcount = 0;
+            var timespell = 'times';
+            for (var i = 0; i < passlist.length; i++) {
+              if (subsha1pass == passlist[i].split(":")[0]) {
+                pwnedcount = passlist[i].split(":")[1];
+                if (passlist[i].split(":")[1] == 1){ timespell = "time"; }
+              }
+            }
+
+            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">Oh no! This password was found <b>'+ pwnedcount + '</b> '+ timespell + ' in compromised passwords databases! If this is your password, you should change it immediately. Using a password that has been breached is extremely dangerous. <h4>If you are using this password on multiple websites, you should take the opportunity to start using different passwords for every website. Attackers can take the advantage of password reuse by automating login attempts on your account using breached emails and password pairs.</h4></span>';
           }else {
             document.getElementById("iscompromised").innerHTML = '<span style="color: #339966;">Good news, this password has never been breached!</span>';
           }
