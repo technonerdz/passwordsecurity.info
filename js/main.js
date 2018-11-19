@@ -54,22 +54,26 @@
 
 var passwordInput = document.getElementById("password-box")
 var passwordplain = '';
-var lastpasschecked = '';
-var lastrequestfinished = true;
-window.setInterval(function(){
-  passwordplain = passwordInput.value;
-  if ((lastpasschecked !== passwordplain) && lastrequestfinished) {
+var xhttp;
+
+function passwordmodified() {
+  var modifiedpassword = passwordInput.value;
+  if (modifiedpassword !== passwordplain) {
+    document.getElementById("iscompromised").innerHTML = '<span style="color: #ff9900;"><img src="img/loading.gif" alt="" width="25" height="25" />&nbsp;We are checking if your password has ever been compromised...</span>';
+
+    passwordplain = modifiedpassword;
 
     if (passwordplain !== '') {
 
       var sha1pass = SHA1(passwordplain);
       sha1pass = sha1pass.toUpperCase();
       var subsha1pass = sha1pass.substring(5);
-      lastrequestfinished = false;
-      var xhttp = new XMLHttpRequest();
+      if (xhttp) {
+        xhttp.abort();
+      }
+      xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          lastrequestfinished = true;
           var xhttpresponse = this.responseText;
           if (xhttpresponse.indexOf(subsha1pass) !== -1) {
 
@@ -85,13 +89,7 @@ window.setInterval(function(){
 
             document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">Oh no! This password was found <b>'+ pwnedcount + '</b> '+ timespell + ' in compromised passwords databases! If this is your password, you should change it immediately. Using a password that has been breached is extremely dangerous. <h4>If you are using this password on multiple websites, you should take the opportunity to start using different passwords for every website. Attackers can take the advantage of password reuse by automating login attempts on your account using breached emails and password pairs.</h4></span>';
           }else {
-            lastrequestfinished = true;
             document.getElementById("iscompromised").innerHTML = '<span style="color: #339966;">Good news, this password has never been breached!</span>';
-          }
-        }else {
-          if (this.readyState == 4) {
-            lastrequestfinished = true;
-            document.getElementById("iscompromised").innerHTML = '<span style="color: #ff0000;">This password can\'t be verified right now...</span>';
           }
         }
       };
@@ -99,15 +97,7 @@ window.setInterval(function(){
       xhttp.open('GET', 'https://api.pwnedpasswords.com/range/' + sha1pass.substring(0, 5));
       xhttp.send();
     }
-    lastpasschecked = passwordplain;
-  }
 
-}, 2000);
-
-function passwordmodified() {
-  var modifiedpassword = passwordInput.value;
-  if (modifiedpassword !== passwordplain) {
-    document.getElementById("iscompromised").innerHTML = '<span style="color: #ff9900;"><img src="img/loading.gif" alt="" width="25" height="25" />&nbsp;We are checking if your password has ever been compromised...</span>';
   }
 }
 
