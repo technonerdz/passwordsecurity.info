@@ -51,15 +51,21 @@
 
 }(this.document));
 
+var requestTimeout;
+function passwordKeyPress(){
+    document.getElementById("iscompromised").innerHTML = '<span style="color: #ff9900;"><img src="img/loading.gif" alt="" width="25" height="25" />&nbsp;We are checking if your password has ever been compromised...</span>';
+    
+    clearTimeout(requestTimeout);
+    requestTimeout = setTimeout(passwordmodified, 2000);
+}
 
-var passwordInput = document.getElementById("password-box")
+var passwordInput = document.getElementById("password-box");
 var passwordplain = '';
 var xhttp;
 
 function passwordmodified() {
   var modifiedpassword = passwordInput.value;
   if (modifiedpassword !== passwordplain) {
-    document.getElementById("iscompromised").innerHTML = '<span style="color: #ff9900;"><img src="img/loading.gif" alt="" width="25" height="25" />&nbsp;We are checking if your password has ever been compromised...</span>';
 
     passwordplain = modifiedpassword;
 
